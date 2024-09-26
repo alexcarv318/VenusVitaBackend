@@ -1,9 +1,12 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter
+from starlette.exceptions import HTTPException
 from pydantic import BaseModel, EmailStr
-import config
-import send_email as smtp_client
-from redis_cli import redis_client
+from starlette.status import HTTP_429_TOO_MANY_REQUESTS
+
+from api import config
+import api.utils.send_email as smtp_client
+from api.utils.redis_cli import redis_client
 
 
 router = APIRouter()
@@ -19,7 +22,10 @@ class AppointmentRequest(BaseModel):
 @router.post("/create")
 async def make_appointment(request: AppointmentRequest):
     if not is_request_allowed(request.email):
-        return {"error": "You can only make one appointment per day."}
+        return HTTPException(
+            status_code=HTTP_429_TOO_MANY_REQUESTS,
+            detail="You can only make one appointment per day."
+        )
 
     send_mail(request.name, request.surname, request.phone, request.email)
 

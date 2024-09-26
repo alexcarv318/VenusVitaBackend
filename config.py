@@ -4,6 +4,7 @@ import os
 load_dotenv()
 
 MONGO_CONN_URI = os.getenv("MONGO_CONN_URI")
+MONGO_DB_NAME = os.getenv("MONGO_DB_NAME")
 
 REDIS_HOST = os.getenv("REDIS_HOST")
 REDIS_PORT = os.getenv("REDIS_PORT")
