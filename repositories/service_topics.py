@@ -1,5 +1,5 @@
-from api.repositories.base import BaseRepository
-from api.utils.parse_json import parse_json
+from repositories.base import BaseRepository
+from utils.parse_json import parse_json
 
 
 class ServiceTopicsRepository(BaseRepository):
