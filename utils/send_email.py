@@ -2,7 +2,7 @@ import smtplib
 import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from .. import config
+import config
 
 smtp_server = config.SMTP_HOST
 smtp_port = config.SMTP_PORT

@@ -1,5 +1,5 @@
 import redis
-from .. import config
+import config
 
 redis_client = redis.Redis(
     host=config.REDIS_HOST,
