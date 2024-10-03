@@ -61,5 +61,5 @@ def is_request_allowed(email: str) -> bool:
 
 
 def save_request_time(email: str):
-    redis_client.set(email, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    redis_client.set(email, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 60 * 60 * 24)
 

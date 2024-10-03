@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import appointments, services
 
-app = FastAPI()
+app = FastAPI(root_path="/api")
 
 app.include_router(router=appointments.router, prefix="/appointment", tags=["appointment"])
 app.include_router(router=services.router, prefix="/services", tags=["services"])
