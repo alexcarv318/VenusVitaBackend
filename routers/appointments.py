@@ -4,9 +4,9 @@ from starlette.exceptions import HTTPException
 from pydantic import BaseModel, EmailStr
 from starlette.status import HTTP_429_TOO_MANY_REQUESTS
 
-from api import config
-import api.utils.send_email as smtp_client
-from api.utils.redis_cli import redis_client
+from .. import config
+from ..utils import send_email as smtp_client
+from ..utils.redis_cli import redis_client
 
 
 router = APIRouter()
